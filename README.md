@@ -69,7 +69,9 @@ In Swap v1, the diagonal positions of the second half of the channels are swappe
 
 The position of 32 and 37 are exchanged
 
-### This is not perfect enough, therefore, we have developed Swap v2
+---
+
+> This is not perfect enough, therefore, we have developed Swap v2
 
 ## Install Swap v2 (exactly described in our paper)
 ```bash
