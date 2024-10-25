@@ -6,8 +6,15 @@
 ### This repository is for paper "Gaussian-Based Swap Operator for Context-Aware Extraction of Building Boundary Vectors"
 
 
-> We implement it by CUDA/C++, therefore, in here, pls following the steps to install G-Swap v1
+> We implement it by CUDA/C++, therefore, in here, pls following the steps to install G-Swap v1 and v2
  
+```
+To get started, clone the repository and install the required dependencies:
+
+git clone git@github.com:moulelin/G-Swap.git
+cd GSwap
+pip install -r requirements.txt
+```
 
 ## Why we need CUDA?
 
@@ -32,12 +39,15 @@ cd swapv1
 python setup.py install
 ```
 
-Note: if you are in Windows, pls using administrator mood "cmd" prompt instead of default
-
+Note: If you are using Windows, please open the Command Prompt in administrator mode instead of the default mode.
 > The G-Swap operator is now available in your Python libraries, and you can call it just like any other library.
 > However, G-Swap depends on PyTorch and requires importing "torch" before importing "Swap"
 
 ## run the demo
+
+```bash
+cd ..
+```
 
 ```bash
 python demo_swapv1.py
@@ -59,7 +69,7 @@ In Swap v1, the diagonal positions of the second half of the channels are swappe
 
 The position of 32 and 37 are exchanged
 
-This is not perfect enough, therefore, we have developed Swap v2
+### This is not perfect enough, therefore, we have developed Swap v2
 
 ## Install Swap v2 (exactly described in our paper)
 ```bash
