@@ -1,0 +1,50 @@
+#include <iostream>
+#include <torch/torch.h>
+#include "include/utils.h"
+using namespace torch;
+using namespace std;
+
+int main() {
+  
+	int B = 1, C = 2, H = 5, W = 5;
+	torch::TensorOptions options = torch::TensorOptions().device(torch::kCUDA).dtype(torch::kFloat32);
+	torch::Tensor input = torch::rand({B,C,W,H},options);
+	torch::Tensor exp = torch::rand({B,2*C,W,H},input.options());
+	torch::Tensor sigma = torch::rand({B,2*C,W,H},input.options());
+
+	// int C = exp.size(1) / 2;
+	//
+	
+	std::vector<torch::Tensor> exp_split = torch::split(exp, C, 1);
+	// input,exPx,exPy,sigmax,sigmay
+	torch::Tensor offset_exPx = torch::sigmoid(exp_split[0]);
+	torch::Tensor exPx = offset_exPx * (H - 1);
+
+	torch::Tensor offset_exPy = torch::sigmoid(exp_split[1]);
+	torch::Tensor exPy = offset_exPy * (W - 1);
+
+
+	std::vector<torch::Tensor> sigma_split = torch::split(sigma, C, 1);
+	torch::Tensor sigmax = torch::sigmoid(sigma_split[0]);
+	torch::Tensor sigmay = torch::sigmoid(sigma_split[1]);
+
+	torch::Tensor output = swap_fw(input,exPx,exPy,sigmax,sigmay);
+
+
+	torch::Tensor co = torch::ones({input.sizes()}, input.options());
+
+	std::cout << "Shape of split_tensors[0]: " << co.sizes() << std::endl;
+
+	// std::cout << "Shape of split_tensors[0]: " << exp_split[0].sizes() << std::endl;
+	// std::cout << "Shape of split_tensors[1]: " << exp_split[1].sizes() << std::endl;
+
+	
+	// std::cout << "exPx: " << exPx << std::endl;
+	// std::cout << "exPy: " << exPy << std::endl;
+	// std::cout << "input: " << input<< std::endl;
+	// std::cout << "output: " << output<< std::endl;
+	// std::cout << input << std::endl;
+	// std::cout << output << std::endl;
+    // swap_cu_host(a);
+    return 0;
+}

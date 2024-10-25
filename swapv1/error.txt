@@ -1,0 +1,43 @@
+scp -P 40010 -r  /Users/moule/Desktop/summer_project/Shift-GCN/swapNN/cuda root@62.20.1.114:moule/Shift-GCN/swapNN
+
+scp -P 40020 -r  /Users/moule/Desktop/swap root@62.20.1.114:/root/swap
+
+sudo apt-get install build-essential
+
+
+
+tmpxft_00000235_00000000-6_swap_kernel.cudafe1.cpp:(.text+0xa99): multiple definition of `swap_cuda_forward(at::Tensor, int)'; build/temp.linux-x86_64-3.9/swap_kernel.o:tmpxft_00000235_00000000-6_swap_kernel.cudafe1.cpp:(.text+0xa99): first defined here
+/opt/conda/compiler_compat/ld: build/temp.linux-x86_64-3.9/swap_kernel.o: in function `(anonymous namespace)::swap_cuda_backward_kernel(float*, int, int, int, int, int)':
+tmpxft_00000235_00000000-6_swap_kernel.cudafe1.cpp:(.text+0x16eb): multiple definition of `(anonymous namespace)::swap_cuda_backward_kernel(float*, int, int, int, int, int)'; build/temp.linux-x86_64-3.9/swap_kernel.o:tmpxft_00000235_00000000-6_swap_kernel.cudafe1.cpp:(.text+0x16eb): first defined here
+/opt/conda/compiler_compat/ld: build/temp.linux-x86_64-3.9/swap_kernel.o: in function `swap_cuda_backward(at::Tensor, int)':
+tmpxft_00000235_00000000-6_swap_kernel.cudafe1.cpp:(.text+0x1155): multiple definition of `swap_cuda_backward(at::Tensor, int)'; build/temp.linux-x86_64-3.9/swap_kernel.o:tmpxft_00000235_00000000-6_swap_kernel.cudafe1.cpp:(.text+0x1155): first defined here
+/opt/conda/compiler_compat/ld: build/temp.linux-x86_64-3.9/swap_kernel.o: in function `__device_stub__ZN49_GLOBAL__N__68ebadbd_16_swap_kernel_cu_5d07e18526swap_cuda_forward_kernelEPfiiiii(float*, int, int, int, int, int)':
+tmpxft_00000235_00000000-6_swap_kernel.cudafe1.cpp:(.text+0x1313): multiple definition of `__device_stub__ZN49_GLOBAL__N__68ebadbd_16_swap_kernel_cu_5d07e18526swap_cuda_forward_kernelEPfiiiii(float*, int, int, int, int, int)'; build/temp.linux-x86_64-3.9/swap_kernel.o:tmpxft_00000235_00000000-6_swap_kernel.cudafe1.cpp:(.text+0x1313): first defined here
+/opt/conda/compiler_compat/ld: build/temp.linux-x86_64-3.9/swap_kernel.o: in function `__device_stub__ZN49_GLOBAL__N__68ebadbd_16_swap_kernel_cu_5d07e18527swap_cuda_backward_kernelEPfiiiii(float*, int, int, int, int, int)':
+tmpxft_00000235_00000000-6_swap_kernel.cudafe1.cpp:(.text+0x1520): multiple definition of `__device_stub__ZN49_GLOBAL__N__68ebadbd_16_swap_kernel_cu_5d07e18527swap_cuda_backward_kernelEPfiiiii(float*, int, int, int, int, int)'; build/temp.linux-x86_64-3.9/swap_kernel.o:tmpxft_00000235_00000000-6_swap_kernel.cudafe1.cpp:(.text+0x1520): first defined here
+
+/opt/conda/compiler_compat/ld: build/temp.linux-x86_64-3.9/swap_kernel.o: in function `swap_cuda_forward(at::Tensor, int)':
+tmpxft_000001ac_00000000-6_swap_kernel.cudafe1.cpp:(.text+0xa99): multiple definition of `swap_cuda_forward(at::Tensor, int)'; build/temp.linux-x86_64-3.9/swap_kernel.o:tmpxft_000001ac_00000000-6_swap_kernel.cudafe1.cpp:(.text+0xa99): first defined here
+/opt/conda/compiler_compat/ld: build/temp.linux-x86_64-3.9/swap_kernel.o: in function `swap_cuda_backward(at::Tensor, int)':
+tmpxft_000001ac_00000000-6_swap_kernel.cudafe1.cpp:(.text+0x1155): multiple definition of `swap_cuda_backward(at::Tensor, int)'; build/temp.linux-x86_64-3.9/swap_kernel.o:tmpxft_000001ac_00000000-6_swap_kernel.cudafe1.cpp:(.text+0x1155): first defined here
+
+
+
+
+Note: Avoid using python setup.py install use pip install .
+
+You need to remove all files manually, and also undo any other stuff that installation did manually.
+
+If you don't know the list of all files, you can reinstall it with the --record option, and take a look at the list this produces.
+
+To record a list of installed files, you can use:
+
+python setup.py install --record files.txt
+
+Once you want to uninstall you can use xargs to do the removal:
+
+xargs rm -rf < files.txt
+Or if you're running Windows, use Powershell:
+
+Get-Content files.txt | ForEach-Object {Remove-Item $_ -Recurse -Force}
+Then delete also the containing directory, e.g. /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/my_module-0.1.egg/ on macOS. It has no files, but Python will still import an empty module:

@@ -1,0 +1,9 @@
+/opt/conda/lib/python3.10/site-packages/swap_kernel_linear_cpp-0.0.0-py3.10-linux-x86_64.egg/swap_kernel.cpython-310-x86_64-linux-gnu.so
+/opt/conda/lib/python3.10/site-packages/swap_kernel_linear_cpp-0.0.0-py3.10-linux-x86_64.egg/swap_kernel.py
+/opt/conda/lib/python3.10/site-packages/swap_kernel_linear_cpp-0.0.0-py3.10-linux-x86_64.egg/EGG-INFO/PKG-INFO
+/opt/conda/lib/python3.10/site-packages/swap_kernel_linear_cpp-0.0.0-py3.10-linux-x86_64.egg/EGG-INFO/SOURCES.txt
+/opt/conda/lib/python3.10/site-packages/swap_kernel_linear_cpp-0.0.0-py3.10-linux-x86_64.egg/EGG-INFO/dependency_links.txt
+/opt/conda/lib/python3.10/site-packages/swap_kernel_linear_cpp-0.0.0-py3.10-linux-x86_64.egg/EGG-INFO/native_libs.txt
+/opt/conda/lib/python3.10/site-packages/swap_kernel_linear_cpp-0.0.0-py3.10-linux-x86_64.egg/EGG-INFO/not-zip-safe
+/opt/conda/lib/python3.10/site-packages/swap_kernel_linear_cpp-0.0.0-py3.10-linux-x86_64.egg/EGG-INFO/top_level.txt
+/opt/conda/lib/python3.10/site-packages/swap_kernel_linear_cpp-0.0.0-py3.10-linux-x86_64.egg/__pycache__/swap_kernel.cpython-310.pyc
